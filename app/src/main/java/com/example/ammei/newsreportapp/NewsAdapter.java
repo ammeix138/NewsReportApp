@@ -47,15 +47,16 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Display the title of the current news article in that TextView
         titleView.setText(currentNews.getTitle());
 
+        // Find the TextView with view ID section
+        TextView sectionView = (TextView) listItemView.findViewById(R.id.section);
+        // Display the correct section of the current news article in that TextView
+        sectionView.setText(currentNews.getSection());
+
         // Find the TextView with view ID date
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
         // Display the date of the current news article in that TextView
         dateView.setText(currentNews.getDate());
 
-        // Find the TextView with view ID section
-        TextView sectionView = (TextView) listItemView.findViewById(R.id.section);
-        // Display the correct section of the current news article in that TextView
-        sectionView.setText(currentNews.getSection());
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;

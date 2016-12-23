@@ -161,7 +161,9 @@ public final class QueryUtils {
             // build up a list of News objects with the corresponding data.
             JSONObject baseJsonResponse = new JSONObject(newsJson);
 
-            JSONArray resultsArray = baseJsonResponse.getJSONArray("results");
+            JSONObject response = baseJsonResponse.getJSONObject("response");
+
+            JSONArray resultsArray = response.getJSONArray("results");
 
             for (int i = 0; i < resultsArray.length(); i++) {
                 JSONObject ArrayObject = resultsArray.getJSONObject(i);
@@ -169,9 +171,9 @@ public final class QueryUtils {
                 String webTitle = ArrayObject.getString("webTitle");
                 String sectionName = ArrayObject.getString("sectionName");
                 String webPublicationDate = ArrayObject.getString("webPublicationDate");
-                String url = ArrayObject.getString("url");
+                String webUrl = ArrayObject.getString("webUrl");
 
-                News results = new News(webTitle, sectionName, webPublicationDate, url);
+                News results = new News(webTitle, sectionName, webPublicationDate, webUrl);
                 news.add(results);
 
 

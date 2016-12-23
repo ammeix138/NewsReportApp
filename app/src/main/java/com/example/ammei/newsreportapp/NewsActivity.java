@@ -10,10 +10,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
+import android.app.LoaderManager.LoaderCallbacks;
+import android.app.LoaderManager;
+import android.content.Loader;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity
+        implements LoaderCallbacks<List<News>> {
+
+    /**
+     * Constant value for the news loader ID.
+     */
+    private static final int NEWS_LOADER_ID = 1;
 
     /**
      * Adapter for the list of articles being displayed
@@ -66,45 +77,30 @@ public class NewsActivity extends AppCompatActivity {
             }
         });
 
-        //Start the AsnycTask to fetch the news data
-        NewsAsyncTask task = new NewsAsyncTask();
-        task.execute(NEWS_REQUEST_URL);
-
+        LoaderManager loaderManager = getLoaderManager();
+        loaderManager.initLoader(NEWS_LOADER_ID, null, this);
     }
 
-    /*
-     *(@link AsyncTask} to perform the network request on a background thread, and then
-     * update the UI with the list of news articles in the response
-     */
-    private class NewsAsyncTask extends AsyncTask<String, Void, List<News>> {
+    @Override
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+        return new NewsLoader(this, NEWS_REQUEST_URL);
+    }
 
-        /*
-         *Do in background method performing the actual network request
-         */
-        @Override
-        protected List<News> doInBackground(String... urls) {
-            //Don't perform the request if there are no URL's, or the first  URL is null
-            if (urls.length < 1 || urls[0] == null) {
-                return null;
-            }
-
-            List<News> result = QueryUtils.fetchNewsData(urls[0]);
-            return result;
-
+    @Override
+    public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
+        mAdapter.clear();
+        if (news != null && !news.isEmpty()) {
+            mAdapter.addAll(news);
         }
+    }
 
-        /*
-         *On post execute method receives the data from the doInBackground() method, updating
-         *the adapter with a new list of news articles.
-         */
-        @Override
-        protected void onPostExecute(List<News> data) {
-            mAdapter.clear();
-
-            if (data != null && !data.isEmpty()) {
-                mAdapter.addAll(data);
-            }
-        }
+    @Override
+    public void onLoaderReset(Loader<List<News>> loader) {
+        mAdapter.clear();
     }
 }
+
+
+
+
 

@@ -6,12 +6,14 @@ articles should be displayed within the app-->
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#3F51B5"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:layout_margin="8dp"
         android:fontFamily="sans-serif"
         android:textColor="#000000"
@@ -20,23 +22,25 @@ articles should be displayed within the app-->
         tools:text="Title Of Article" />
 
     <TextView
-        android:id="@+id/date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:fontFamily="sans-serif"
-        android:textColor="#000000"
-        android:textSize="16dp"
-        tools:text="Date Published" />
-
-    <TextView
         android:id="@+id/section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="4dp"
         android:fontFamily="sans-serif"
         android:textColor="#000000"
         android:textSize="16dp"
         tools:text="Section" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Mar 6, 2010" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="3:00 PM" />
 
 </LinearLayout>

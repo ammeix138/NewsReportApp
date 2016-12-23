@@ -6,24 +6,16 @@ package com.example.ammei.newsreportapp;
 
 public class News {
 
-    /**
-     * Title of the news article
-     */
+    /**Title of the news article*/
     private String mTitle;
 
-    /**
-     * Date the news article was published
-     */
+    /**Date the news article was published*/
     private String mDate;
 
-    /**
-     * Section the news article is related to
-     */
+    /**Section the news article is related to*/
     private String mSection;
 
-    /**
-     * Website URL for the news articles
-     */
+    /**Website URL for the news articles*/
     private String mURL;
 
     /*
@@ -34,7 +26,7 @@ public class News {
      * @param section, is the section the article is related to
      * @param url, is the websites URL
      */
-    public News(String title, String date, String section, String url) {
+    public News(String title, String date, String section, String url){
         mTitle = title;
         mDate = date;
         mSection = section;
@@ -45,28 +37,28 @@ public class News {
     /*
      *Return the Title of the news article.
      */
-    public String getTitle() {
+    public String getTitle(){
         return mTitle;
     }
 
     /*
      *Returns the published date of the news article
      */
-    public String getDate() {
+    public String getDate(){
         return mDate;
     }
 
     /*
      *Return the articles related section (ie. "Sports")
      */
-    public String getSection() {
+    public String getSection(){
         return mSection;
     }
 
     /*
-     *Returns the website URL to return more info on a particular news article
+     *Returns the website URL to return more info on a particular a
      */
-    public String getURL() {
+    public String getURL(){
         return mURL;
     }
 
