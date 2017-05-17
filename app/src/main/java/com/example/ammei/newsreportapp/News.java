@@ -49,7 +49,7 @@ public class News {
     }
 
     /*
-     *Returns the published date of the news article
+     *Return the published date of the news article
      */
     public String getDate() {
         return mDate;
