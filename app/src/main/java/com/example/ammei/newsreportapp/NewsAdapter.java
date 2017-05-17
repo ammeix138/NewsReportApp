@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,7 +22,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
      * Constructs a new {@link NewsAdapter}.
      *
      * @param context of the app
-     * @param news    is the list of earthquakes, which is the data source of the adapter
+     * @param news    is the list of news articles
      */
     public NewsAdapter(Context context, List<News> news) {
         super(context, 0, news);
@@ -52,13 +54,27 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // Display the correct section of the current news article in that TextView
         sectionView.setText(currentNews.getSection());
 
-        // Find the TextView with view ID date
+        // Displays the date for each news entry.
         TextView dateView = (TextView) listItemView.findViewById(R.id.date);
-        // Display the date of the current news article in that TextView
-        dateView.setText(currentNews.getDate());
 
+        //Formats the date properly, ie. "May 14th, 2017 11:28:23"
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss'Z'");
+        Date date = null;
+        try {
+            date = simpleDateFormat.parse(currentNews.getDate());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //Taking the Date within each news article and displaying them with the correct
+        //formatting
+        SimpleDateFormat newDateFormat = new SimpleDateFormat("MMM dd, yyyy hh:mm:ss");
+        String finalDate = newDateFormat.format(date);
+
+        dateView.setText(finalDate);
 
         // Return the list item view that is now showing the appropriate data
         return listItemView;
     }
 }
+

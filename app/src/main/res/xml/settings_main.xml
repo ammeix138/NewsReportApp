@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title">
+
+    <ListPreference
+        android:defaultValue="@string/settings_min_section_default"
+        android:key="@string/setting_article_section_key"
+        android:selectAllOnFocus="true"
+        android:title="Filter Article Section: " />
+
+    <EditTextPreference
+        android:defaultValue="All Articles"
+        android:inputType="text"
+        android:key="@string/setting_article_section_key"
+        android:selectAllOnFocus="true"
+        android:title="@string/setting_article_section" />
+
+</PreferenceScreen>

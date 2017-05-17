@@ -15,7 +15,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     private String mUrl;
 
-    public NewsLoader(Context context, String url){
+    public NewsLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
@@ -27,7 +27,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     @Override
     public List<News> loadInBackground() {
-        if (mUrl == null){
+        if (mUrl == null) {
             return null;
         }
 

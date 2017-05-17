@@ -3,4 +3,16 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--Background color displayed within the ListView-->
+    <color name="listview_background">#78909C</color>
+
+    <!--Text color for the "Sections" TextView-->
+    <color name="section_Text_color">#40C4FF</color>
+    <!--Text color for the "Title" TextView-->
+    <color name="title_text_color">#000000</color>
+    <!--Text color for the "Date" TextView-->
+    <color name="date_text_color">#FFFFFF</color>
+
+
 </resources>

@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">News Report App</string>
+    <!--Error message displaying No Internet to the user-->
+    <string name="no_internet_connection">Oops, Sorry! No Internet Connection</string>
 
+    <!--Settings Menu Item [CHAR LIMIT=NONE] -->
+    <string name="setting_menu_item">Settings</string>
+    <!--Settings Activity Title [CHAR LIMIT=NONE]-->
+    <string name="settings_title">News Article Settings</string>
+
+    <!--Strings for default article selection-->
+    <string name="setting_article_section">Article Section</string>
+    <string name="setting_article_section_key" translatable="false">art_section</string>
+    <string name="settings_min_section_default" translatable="false">sports</string>
+
+    <!--Strings for the Order-by preference-->
+    <string name="setting_order_by_label">Order By</string>
+
+
+    <!--String displays when there are no news articles found-->
+    <string name="no_news_available">No news articles to display currently, stay tuned for more updates!</string>
 </resources>

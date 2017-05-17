@@ -4,7 +4,6 @@ package com.example.ammei.newsreportapp;
  * Created by ammei on 12/18/2016.
  */
 
-import android.os.HandlerThread;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -34,7 +33,6 @@ public final class QueryUtils {
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     /**
-     * Create a private constructor because no one should ever create a {@link QueryUtils} object.
      * This class is only meant to hold static variables and methods.
      */
     private QueryUtils() {
@@ -101,7 +99,7 @@ public final class QueryUtils {
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
-            //If te request was successful (response code 200)
+            //If the request was successful (response code 200)
             //then read the input stream and parse the response
             if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
@@ -116,9 +114,6 @@ public final class QueryUtils {
                 inputStream.close();
             }
             if (inputStream != null) {
-                //Closing the input stream could throw an IOException, which is why
-                //the makeHttpRequest(URL url) method signature specifies than an IOException
-                //could be thrown.
                 inputStream.close();
             }
 
@@ -153,9 +148,6 @@ public final class QueryUtils {
         // Create an empty ArrayList
         List<News> news = new ArrayList<>();
 
-        // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
-        // is formatted, a JSONException exception object will be thrown.
-        // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
 
             // build up a list of News objects with the corresponding data.
@@ -166,17 +158,15 @@ public final class QueryUtils {
             JSONArray resultsArray = response.getJSONArray("results");
 
             for (int i = 0; i < resultsArray.length(); i++) {
-                JSONObject ArrayObject = resultsArray.getJSONObject(i);
+                JSONObject currentArticle = resultsArray.getJSONObject(i);
 
-                String webTitle = ArrayObject.getString("webTitle");
-                String sectionName = ArrayObject.getString("sectionName");
-                String webPublicationDate = ArrayObject.getString("webPublicationDate");
-                String webUrl = ArrayObject.getString("webUrl");
+                String webTitle = currentArticle.getString("webTitle");
+                String webPublicationDate = currentArticle.getString("webPublicationDate");
+                String sectionName = currentArticle.getString("sectionName");
+                String webUrl = currentArticle.getString("webUrl");
 
-                News results = new News(webTitle, sectionName, webPublicationDate, webUrl);
+                News results = new News(webTitle, webPublicationDate, sectionName, webUrl);
                 news.add(results);
-
-
             }
 
         } catch (JSONException e) {
